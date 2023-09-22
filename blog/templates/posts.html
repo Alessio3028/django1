@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>POSTS DE LA APLICACION</h1>
+
+{% for post in posts %}
+	<h2>{{post.title}}</h2>
+	<p>{{post.description|striptags|truncatechars:250}}</p>
+	<p>{{post.date|date:'M d Y'|upper}}</p>
+	<img src="{{post.image.url}}" alt="{{post.title}}" width="1200" height="650">
+        <br>
+	<a href="{% url 'blog:post_detail' post.id %}">Details</a>
+{% endfor %}
+{% endblock %}
